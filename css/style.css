@@ -2381,6 +2381,12 @@ a:focus, a:hover, .btn:focus, .btn:hover, button:focus, button:hover {
   .header_aera .navbar-header .navbar-brand {
     padding-top: 30px;
   }
+  
+  @media (max-width: 600px){
+      .header_aera .navbar-header .navbar-brand {
+      padding-top: 10px;
+    }
+  }
 
   .header_aera .navbar-collapse .navbar-nav.navbar-right li a {
     line-height: 45px;
