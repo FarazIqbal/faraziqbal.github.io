@@ -1,19 +1,5 @@
 ;(function($) {
     "use strict";
-	
-    //* mainNavbar
-    function mainNavbar(){
-        if ( $('#main_navbar').length ){ 
-             $('#main_navbar').affix({
-                offset: {
-                    top: 10,
-                    bottom: function () {
-                        return (this.bottom = $('.footer').outerHeight(true))
-                    }
-                }
-            }); 
-        };
-    };
     
     
     //*  Main slider js 
@@ -34,47 +20,6 @@
         }
     }
     
-    //* Isotope Js
-    function portfolio_isotope(){
-        if ( $('.portfolio_item, .portfolio_2 .portfolio_filter ul li').length ){
-            // Activate isotope in container
-            $(".portfolio_item").imagesLoaded( function() {
-                $(".portfolio_item").isotope({
-                    itemSelector: ".single_facilities",
-                    layoutMode: 'masonry',
-                    percentPosition:true,
-                    masonry: {
-                        columnWidth: ".grid-sizer, .grid-sizer-2"  
-                    }            
-                }); 
-            }); 
-            
-            // Activate isotope in container
-            $(".portfolio_2").imagesLoaded( function() {
-                $(".portfolio_2").isotope({
-                    itemSelector: ".single_facilities",
-                    layoutMode: 'fitRows',
-                }); 
-            });
-            // Add isotope click function
-            $(".portfolio_filter ul li").on('click',function(){
-                $(".portfolio_filter ul li").removeClass("active");
-                $(this).addClass("active");
-
-                var selector = $(this).attr("data-filter");
-                $(".portfolio_item, .portfolio_2").isotope({
-                    filter: selector,
-                    animationOptions: {
-                        duration: 450,
-                        easing: "linear",
-                        queue: false,
-                    }
-                });
-                return false;
-            });
-        }
-    };
-    
     //* Stellar 
     $(function(){
         $.stellar({
@@ -83,20 +28,33 @@
         });
     });
 
+    $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        touch: true,
+        asNavFor: '#slider'
+      });
+     
+      $('#slider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        itemWidth: 620,
+        itemMargin: 5,
+        touch: true,
+        slideshow: false,
+        sync: "#carousel"
+      });
+
     
     
     /*Function Calls*/ 
     new WOW().init();
 	home_main_slider();
     portfolio_isotope ();
-    mainNavbar ();
-
-    $(window).load(function(){
-
-        $(".portfolio_item, .portfolio_2").isotope({
-            filter: ".all"
-        });
-        
-    });
     
 })(jQuery);
