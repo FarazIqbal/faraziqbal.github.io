@@ -55,6 +55,5 @@
     /*Function Calls*/ 
     new WOW().init();
 	home_main_slider();
-    portfolio_isotope ();
     
 })(jQuery);
